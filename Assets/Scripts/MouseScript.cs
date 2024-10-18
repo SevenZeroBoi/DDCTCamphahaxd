@@ -84,7 +84,7 @@ public class MouseScript : MonoBehaviour
             if (currentMousePosition == "NONE") break;
             else if (selfList[i].tag == currentMousePosition)
             {
-                holdingItem = Instantiate(itemOnSelf[i], boxcheck.transform.position, Quaternion.identity);
+                holdingItem = ObjectPooling.Instance.GetFromPool(itemOnSelf[i].name, itemOnSelf[i], boxcheck.transform.position, Quaternion.identity);
                 break;
             }
             

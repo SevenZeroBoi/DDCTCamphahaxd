@@ -10,6 +10,7 @@ TagManager:
   - EYE
   - MUSCLE
   - BASE
+  - OVEN
   layers:
   - Default
   - TransparentFX
