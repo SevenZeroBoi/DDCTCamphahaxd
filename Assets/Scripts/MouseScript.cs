@@ -16,19 +16,20 @@ public class MouseScript : MonoBehaviour
     public GameObject boxcheck;
 
     public GameObject[] selfList;
-    private GameObject[] itemOnSelf;
+    public GameObject[] itemOnSelf;
 
-    public GameObject holdingItem = null;
+    [HideInInspector] public GameObject holdingItem = null;
 
-    public bool isItemOnHold = false;
+    private bool isItemOnHold = false;
 
     public TMP_Text textcursor;
     public TextMeshProUGUI textcursorpos;
 
     void Start()
     {
+        /*
         itemOnSelf = new GameObject[CombinationSystem.instance.mainIngredients.Length];
-        itemOnSelf = CombinationSystem.instance.mainIngredients.Concat(CombinationSystem.instance.elementIngredients).ToArray();
+        itemOnSelf = CombinationSystem.instance.mainIngredients.Concat(CombinationSystem.instance.elementIngredients).ToArray();*/
     }
 
     private void Update()

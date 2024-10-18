@@ -9,12 +9,17 @@ public class CombinationSystem : MonoBehaviour
 
 
     private Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]> ();
-    private List<string> currentItemCode = new List<string>();
+    [HideInInspector] public List<string> currentItemCode = new List<string>();
 
     public GameObject[] mainIngredients;
     public GameObject[] elementIngredients;
     public GameObject[] allResults;
-    
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void SetUpRecipes()
     {
@@ -28,9 +33,8 @@ public class CombinationSystem : MonoBehaviour
     }
 
 
-    bool isTheOvenStart = false;
-    bool canAddMoreItem = false;
-    void CheckCombineItem()
+   
+    public void CheckCombineItem()
     {
         foreach (var num in combindingItems)
         {
@@ -44,30 +48,7 @@ public class CombinationSystem : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (isTheOvenStart)
-        {
-            CheckCombineItem();
-            isTheOvenStart = false;
-        }
-        else
-        {
-            //click to trigger the oven -> isTheOvenStart = true -> time.deltatime
-        }
-    }
+    
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Items" && canAddMoreItem && Input.GetMouseButtonUp(0))
-        {
-            currentItemCode.Add(collision.gameObject.name);
-
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        
-    }
 
 }
