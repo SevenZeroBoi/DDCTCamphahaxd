@@ -23,7 +23,7 @@ public class OvenScript : MonoBehaviour
     float cooldownCheck = 0;
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Items" && !isTheOvenStart)
+        if (collision.gameObject.tag == "ITEMS" && !isTheOvenStart)
         {
             if (Input.GetMouseButtonUp(0) && canAddMoreItem)
             {
