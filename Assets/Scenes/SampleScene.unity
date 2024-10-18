@@ -131,8 +131,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2867528}
-  - component: {fileID: 2867530}
   - component: {fileID: 2867529}
+  - component: {fileID: 2867530}
   m_Layer: 0
   m_Name: DialogueSystemTest
   m_TagString: Untagged
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2867527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d1d4605e3a0b041b3f0a0d7242d3e8, type: 3}
+  m_Script: {fileID: 11500000, guid: cfc79ca69b9358a4396ff0b6202783e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1925565135}
@@ -362,8 +362,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d96a0f4b847cc3f4c9aeb73d5b51fdf7, type: 2}
+  m_sharedMaterial: {fileID: 5476634846821432232, guid: d96a0f4b847cc3f4c9aeb73d5b51fdf7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
