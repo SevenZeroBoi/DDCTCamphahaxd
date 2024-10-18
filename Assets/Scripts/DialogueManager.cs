@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        dialoguePanel.SetActive(false);
+        dialogueText.text = "";
     }
 
     public bool isDialoguePlaying { get; private set; }
@@ -25,9 +27,12 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) //trigger dialouge
+        if (isDialoguePlaying)
         {
-            ContinueStory();
+            if (Input.GetKeyDown(KeyCode.Return)) //trigger dialouge
+            {
+                ContinueStory();
+            }
         }
     }
 
@@ -35,9 +40,9 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory = new Story(inkJSON.text);
         isDialoguePlaying = true;
-        //anim of dialog panel
+        dialoguePanel.SetActive(true);
 
-        ContinueStory();
+        //ContinueStory();
     }
 
     private void ExitDialogueMode()
