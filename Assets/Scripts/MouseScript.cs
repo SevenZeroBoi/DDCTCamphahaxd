@@ -45,14 +45,16 @@ public class MouseScript : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isItemOnHold=false;
-            if (holdingItem != null) holdingItem.GetComponent<Rigidbody2D>().gravityScale = 4;
+            if (holdingItem != null) holdingItem.GetComponent<ItemScript>().MovementChange();
             holdingItem = null;
         }
 
+        /*
         if (holdingItem != null)
         {
             holdingItem.transform.position = boxcheck.transform.position;
         }
+        */
     }
 
     void FollowingText()
