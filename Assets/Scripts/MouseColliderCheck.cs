@@ -6,6 +6,12 @@ public class MouseColliderCheck : MonoBehaviour
 {
     [SerializeField] private int colliderCount = 0;
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        MouseScript.instance.currentMousePosition = other.gameObject.tag;
+        colliderCount++;
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
         colliderCount--;
@@ -15,11 +21,5 @@ public class MouseColliderCheck : MonoBehaviour
         }
     }
 
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        MouseScript.instance.currentMousePosition = other.gameObject.tag;
-        colliderCount++;
-    }
 
 }

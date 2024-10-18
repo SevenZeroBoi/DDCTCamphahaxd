@@ -12,14 +12,11 @@ public class MouseScript : MonoBehaviour
         instance = this;
     }
 
-
-
-
     public string currentMousePosition = "NONE";
     public GameObject boxcheck;
 
     public GameObject[] selfList;
-    public GameObject[] itemOnSelf;
+    private GameObject[] itemOnSelf;
 
     public GameObject holdingItem = null;
 
@@ -28,9 +25,16 @@ public class MouseScript : MonoBehaviour
     public TMP_Text textcursor;
     public TextMeshProUGUI textcursorpos;
 
+    void Start()
+    {
+        itemOnSelf = new GameObject[CombinationSystem.instance.mainIngredients.Length];
+        itemOnSelf = CombinationSystem.instance.mainIngredients.Concat(CombinationSystem.instance.elementIngredients).ToArray();
+    }
+
     private void Update()
     {
         CursorHitbox();
+        FollowingText();
 
         if (Input.GetMouseButtonDown(0) && !isItemOnHold)
         {
@@ -48,7 +52,10 @@ public class MouseScript : MonoBehaviour
         {
             holdingItem.transform.position = boxcheck.transform.position;
         }
+    }
 
+    void FollowingText()
+    {
         if (currentMousePosition != "NONE")
         {
             textcursor.text = currentMousePosition;
