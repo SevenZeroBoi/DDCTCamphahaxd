@@ -22,8 +22,6 @@ public class OvenScript : MonoBehaviour
     }
 
     float cooldownCheck = 0;
-
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "ITEMS" && !isTheOvenStart)
@@ -59,4 +57,5 @@ public class OvenScript : MonoBehaviour
         canAddMoreItem = true;
         cooldownCheck = 0;
     }
+
 }

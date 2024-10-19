@@ -19,6 +19,7 @@ public class CombinationSystem : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        //SetUpRecipes();
     }
 
     void SetUpRecipes()

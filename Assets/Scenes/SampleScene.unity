@@ -710,6 +710,7 @@ MonoBehaviour:
   - {fileID: 1330543525}
   - {fileID: 2134924111}
   - {fileID: 1336875024}
+  selfLocationCheck: []
   itemOnSelf:
   - {fileID: 6867593114176135795, guid: fdd47c8160f3c554489b37b14c7842bc, type: 3}
   - {fileID: 6867593114176135795, guid: fdd47c8160f3c554489b37b14c7842bc, type: 3}
@@ -1610,7 +1611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1950070729
 Transform:
   m_ObjectHideFlags: 0

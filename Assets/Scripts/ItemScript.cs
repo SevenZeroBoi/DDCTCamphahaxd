@@ -8,8 +8,8 @@ public class ItemScript : MonoBehaviour
 
     private void Start()
     {
-        rb.gravityScale = 0;
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
     }
 
     bool isStillHolding = true;
@@ -23,10 +23,12 @@ public class ItemScript : MonoBehaviour
     {
         if (isStillHolding)
         {
-            transform.position = Vector3.MoveTowards(transform.position, MouseScript.instance.boxcheck.transform.position, Time.deltaTime * 5);
+            //transform.position = Vector3.MoveTowards(transform.position, MouseScript.instance.boxcheck.transform.position, Time.deltaTime * 5);
+            transform.position = MouseScript.instance.boxcheck.transform.position;
         }
         else
         {
+            
             //go to the oven
         }
     }

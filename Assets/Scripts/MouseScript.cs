@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class MouseScript : MonoBehaviour
     public GameObject boxcheck;
 
     public GameObject[] selfList;
+    public GameObject[] selfLocationCheck;
     public GameObject[] itemOnSelf;
 
     [HideInInspector] public GameObject holdingItem = null;
@@ -35,7 +37,7 @@ public class MouseScript : MonoBehaviour
     private void Update()
     {
         CursorHitbox();
-        FollowingText();
+        //FollowingText();
 
         if (Input.GetMouseButtonDown(0) && !isItemOnHold)
         {
@@ -56,6 +58,9 @@ public class MouseScript : MonoBehaviour
         }
         */
     }
+
+    
+
 
     void FollowingText()
     {
@@ -91,6 +96,26 @@ public class MouseScript : MonoBehaviour
             }
             
         }
+    }
+
+    public void RandomizeJarLocation()
+    {
+        System.Random randomvar = new System.Random();
+        int n = selfList.Length;
+
+        for (int i = n - 1; i > 0; i--)
+        {
+            int j = randomvar.Next(0, i + 1);
+            GameObject temp = selfList[i];
+            selfList[i] = selfList[j];
+            selfList[j] = temp;
+        }
+
+        for (int i = 0; i < selfList.Length; i++)
+        {
+            selfList[i].transform.position = selfLocationCheck[i].transform.position;
+        }
+        
     }
 
    
