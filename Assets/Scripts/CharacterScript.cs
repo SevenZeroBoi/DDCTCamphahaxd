@@ -9,10 +9,17 @@ public class CharacterScript : MonoBehaviour
         WAITING, COMPLETE, WRONGITEM, TIMEOUT
     }
 
+    void ChracterEnterTheStore()
+    {
+        //play anim of walking in
+    }
+
     void PlayingWaiting()
     {
         //time deltatime -> if complete -> complete
         //if correct -> send out
+
+
     }
 
     void WrongItem()

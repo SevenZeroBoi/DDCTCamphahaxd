@@ -16,10 +16,6 @@ public class MouseScript : MonoBehaviour
     public string currentMousePosition = "NONE";
     public GameObject boxcheck;
 
-    public GameObject[] selfList;
-    public GameObject[] selfLocationCheck;
-    public GameObject[] itemOnSelf;
-
     [HideInInspector] public GameObject holdingItem = null;
 
     private bool isItemOnHold = false;
@@ -59,9 +55,6 @@ public class MouseScript : MonoBehaviour
         */
     }
 
-    
-
-
     void FollowingText()
     {
         if (currentMousePosition != "NONE")
@@ -86,37 +79,19 @@ public class MouseScript : MonoBehaviour
 
     void CheckShelfTag()
     {
-        for (int i = 0; i < selfList.Length ; i++)
+        for (int i = 0; i < ItemStorage.Instance.selfList.Length ; i++)
         {
             if (currentMousePosition == "NONE") break;
-            else if (selfList[i].tag == currentMousePosition)
+            else if (ItemStorage.Instance.selfList[i].tag == currentMousePosition)
             {
-                holdingItem = ObjectPooling.Instance.GetFromPool(itemOnSelf[i].name, itemOnSelf[i], boxcheck.transform.position, Quaternion.identity);
+                holdingItem = ObjectPooling.Instance.GetFromPool(ItemStorage.Instance.selfList[i].name, ItemStorage.Instance.selfList[i]
+                    , boxcheck.transform.position, Quaternion.identity);
                 break;
             }
             
         }
     }
 
-    public void RandomizeJarLocation()
-    {
-        System.Random randomvar = new System.Random();
-        int n = selfList.Length;
-
-        for (int i = n - 1; i > 0; i--)
-        {
-            int j = randomvar.Next(0, i + 1);
-            GameObject temp = selfList[i];
-            selfList[i] = selfList[j];
-            selfList[j] = temp;
-        }
-
-        for (int i = 0; i < selfList.Length; i++)
-        {
-            selfList[i].transform.position = selfLocationCheck[i].transform.position;
-        }
-        
-    }
 
    
 }
