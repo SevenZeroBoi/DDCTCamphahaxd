@@ -11,9 +11,22 @@ public class ScoreSystem : MonoBehaviour
     {
         instance = this;
     }
+
+    public GameObject dayText;
+
+    private void Update()
+    {
+        PreDayStart();
+    }
     void PreDayStart()
     {
         //play animation
+        if (dayText.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("dayidle"))
+        {
+            DayStart();
+        }
+
+
     }
     void DayStart()
     {

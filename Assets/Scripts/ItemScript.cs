@@ -33,8 +33,9 @@ public class ItemScript : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 9);
             if (transform.position == OvenScript.instance.gameObject.transform.position)
             {
-                rb.gravityScale = 0;
+                rb.isKinematic = false;
                 isStillHolding = true;
+                canMoveToTheOven = false;
                 ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
             }
             //go to the oven
@@ -46,12 +47,13 @@ public class ItemScript : MonoBehaviour
         {
             rb.gravityScale = 0;
             isStillHolding = true;
+            canMoveToTheOven = false;
             ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
         }
 
         if (collision.gameObject.tag == "OVEN" && !isStillHolding)
         {
-            rb.gravityScale = 0;
+            rb.isKinematic = true;
             canMoveToTheOven = true;
         }
     }
