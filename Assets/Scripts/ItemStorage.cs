@@ -6,16 +6,23 @@ using UnityEngine;
 
 public class ItemStorage : MonoBehaviour
 {
-    public static ItemStorage Instance;
+    public static ItemStorage instance;
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
     }
 
     public GameObject[] shelfList;
     public GameObject[] shelfLocationCheck;
     public GameObject[] itemOnShelf;
+
+    public Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]>();
+    [HideInInspector] public List<string> currentItemCode = new List<string>();
+
+    public GameObject[] mainIngredients;
+    public GameObject[] elementIngredients;
+    public GameObject[] allResults;
 
     private void Update()
     {
@@ -24,12 +31,6 @@ public class ItemStorage : MonoBehaviour
             RandomizeJarLocation();
         }
     }
-
-
-    public float rangeBetweenJarX;
-    public float rangeBetweenJarY;
-
-
 
     public void RandomizeJarLocation()
     {
@@ -51,4 +52,28 @@ public class ItemStorage : MonoBehaviour
 
     }
 
+    void SetUpRecipes()
+    {
+        for (int i = 0; i < mainIngredients.Length; i++)
+        {
+            combindingItems.Add(allResults[i], new string[] { mainIngredients[0].name, mainIngredients[i].name });
+            combindingItems.Add(allResults[i + 5], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[0].name });
+            combindingItems.Add(allResults[i + 10], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[1].name });
+            combindingItems.Add(allResults[i + 15], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[2].name });
+        }
+    }
+
+    public void CheckCombineItem()
+    {
+        foreach (var num in combindingItems)
+        {
+            if (currentItemCode.ToArray() == num.Value)
+            {
+                //New item get lolx dd
+                currentItemCode = null;
+                break;
+
+            }
+        }
+    }
 }

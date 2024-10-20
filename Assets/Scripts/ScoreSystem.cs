@@ -32,7 +32,7 @@ public class ScoreSystem : MonoBehaviour
     public GameObject[] npcs;
     void SummonNPCs(int npcnumber)
     {
-        NPCObject = ObjectPooling.Instance.GetFromPool(npcs[npcnumber].name, npcs[npcnumber], Vector3.zero, Quaternion.identity);
+        NPCObject = ObjectPooling.instance.GetFromPool(npcs[npcnumber].name, npcs[npcnumber], Vector3.zero, Quaternion.identity);
     }
 
 

@@ -18,11 +18,6 @@ public class MouseScript : MonoBehaviour
 
     public GameObject holdingItem = null;
 
-    private bool isItemOnHold = false;
-
-    public TMP_Text textcursor;
-    public TextMeshProUGUI textcursorpos;
-
     void Start()
     {
         /*
@@ -35,14 +30,14 @@ public class MouseScript : MonoBehaviour
         CursorHitbox();
         //FollowingText();
 
-        if (Input.GetMouseButtonDown(0) && !isItemOnHold)
+        if (Input.GetMouseButtonDown(0) && !GameStates.instance.isMouseOnHolding)
         {
-            isItemOnHold=true;
+            GameStates.instance.isMouseOnHolding = true;
             CheckShelfTag();
         }
         if (Input.GetMouseButtonUp(0))
         {
-            isItemOnHold=false;
+            GameStates.instance.isMouseOnHolding = false;
             if (holdingItem != null) holdingItem.GetComponent<ItemScript>().MovementChange();
             holdingItem = null;
         }
@@ -54,12 +49,13 @@ public class MouseScript : MonoBehaviour
         }
         */
 
-        if (Input.GetMouseButtonDown(0) && CanAddClickCounting)
+        if (Input.GetMouseButtonDown(0) && CanAddClickCounting && !GameStates.instance.isMouseOnHolding)
         {
             OvenScript.instance.currentClickTimes++;
         }
     }
 
+    /*
     void FollowingText()
     {
         if (currentMousePosition != "NONE")
@@ -73,7 +69,7 @@ public class MouseScript : MonoBehaviour
             textcursorpos.transform.rotation = boxcheck.transform.rotation;
             textcursorpos.transform.localScale = boxcheck.transform.localScale;
         }
-    }
+    }*/
 
     void CursorHitbox()
     {
@@ -82,20 +78,23 @@ public class MouseScript : MonoBehaviour
         boxcheck.transform.position = campos;
     }
 
+
     void CheckShelfTag()
     {
-        for (int i = 0; i < ItemStorage.Instance.shelfList.Length ; i++)
+        for (int i = 0; i < ItemStorage.instance.shelfList.Length ; i++)
         {
             if (currentMousePosition == "NONE") break;
-            else if (ItemStorage.Instance.shelfList[i].tag == currentMousePosition)
+            else if (ItemStorage.instance.shelfList[i].tag == currentMousePosition)
             {
-                holdingItem = ObjectPooling.Instance.GetFromPool(ItemStorage.Instance.itemOnShelf[i].name, ItemStorage.Instance.itemOnShelf[i]
+                holdingItem = ObjectPooling.instance.GetFromPool(ItemStorage.instance.itemOnShelf[i].name, ItemStorage.instance.itemOnShelf[i]
                     , boxcheck.transform.position, Quaternion.identity);
                 break;
             }
             
         }
     }
+
+
 
     bool CanAddClickCounting = false;
     private void OnTriggerEnter2D(Collider2D other)

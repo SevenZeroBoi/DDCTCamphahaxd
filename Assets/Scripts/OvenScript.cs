@@ -12,15 +12,13 @@ public class OvenScript : MonoBehaviour
         instance = this;
     }
 
-    bool isTheOvenStart = false;
-    bool canAddMoreItem = false;
 
     private void Update()
     {
-        if (isTheOvenStart)
+        if (GameStates.instance.isOvenStarting)
         {
-            CombinationSystem.instance.CheckCombineItem();
-            isTheOvenStart = false;
+            ItemStorage.instance.CheckCombineItem();
+            GameStates.instance.isOvenStarting = false;
         }
         else
         {
@@ -31,11 +29,11 @@ public class OvenScript : MonoBehaviour
     float cooldownCheck = 0;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "ITEMS" && !isTheOvenStart && !other.gameObject.GetComponent<ItemScript>().isStillHolding)
+        if (other.gameObject.tag == "ITEMS" && !GameStates.instance.isOvenStarting && !other.gameObject.GetComponent<ItemScript>().isStillHolding)
         {
-            CombinationSystem.instance.currentItemCode.Add(other.gameObject.name);
+            ItemStorage.instance.currentItemCode.Add(other.gameObject.name);
             other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, transform.position, Time.deltaTime * 10);
-            canAddMoreItem = false;
+            GameStates.instance.isOvenStarting = false;
         }
 
         
@@ -56,48 +54,23 @@ public class OvenScript : MonoBehaviour
         }
     }
 
-    public string wordLength;
-    public string pickedWord;
-    public string currentWord;
-    void WhileOvening()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-        {
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-        {
-
-        }
-    }
-
-    
 
 
+
+    bool canAddMoreItem = false;
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "ITEMS" && !isTheOvenStart)
+        if (collision.gameObject.tag == "ITEMS" && !GameStates.instance.isOvenStarting)
         {
             if (Input.GetMouseButtonUp(0) && canAddMoreItem)
             {
-                CombinationSystem.instance.currentItemCode.Add(collision.gameObject.name);
+                ItemStorage.instance.currentItemCode.Add(collision.gameObject.name);
                 collision.gameObject.transform.position = Vector3.MoveTowards(collision.transform.position, transform.position, Time.deltaTime * 10);
                 canAddMoreItem =false;
             }
         }
 
-        if (!canAddMoreItem && !isTheOvenStart)
+        if (!canAddMoreItem && !GameStates.instance.isOvenStarting)
         {
             cooldownCheck += Time.deltaTime;
             if (cooldownCheck > 1)
@@ -108,11 +81,5 @@ public class OvenScript : MonoBehaviour
         }
     }
 
-    /*
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        canAddMoreItem = true;
-        cooldownCheck = 0;
-    }*/
 
 }

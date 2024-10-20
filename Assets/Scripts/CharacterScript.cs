@@ -19,7 +19,6 @@ public class CharacterScript : MonoBehaviour
     public float countdownCheck;
 
     public bool isOrder = false;
-    public bool isGettingItem = false;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -42,11 +41,6 @@ public class CharacterScript : MonoBehaviour
 
             }
 
-            if (isGettingItem)
-            {
-
-            }
-
             
         }
     }
@@ -55,9 +49,9 @@ public class CharacterScript : MonoBehaviour
     GameObject itemWanted;
     void CharacterOrder()
     {
-        int randomitemwanted = Random.Range(0, CombinationSystem.instance.combindingItems.Count);
-        itemWanted = CombinationSystem.instance.combindingItems.ElementAt(randomitemwanted).Key;
-        CombinationSystem.instance.currentItemCode = CombinationSystem.instance.combindingItems.ElementAt(randomitemwanted).Value.ToList();
+        int randomitemwanted = Random.Range(0, ItemStorage.instance.combindingItems.Count);
+        itemWanted = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key;
+        ItemStorage.instance.currentItemCode = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Value.ToList();
         DialogueManager.instance.EnterDialogueMode(DialogueTest);
         
     }

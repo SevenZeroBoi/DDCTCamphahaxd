@@ -36,7 +36,7 @@ public class ItemScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "BORDER")
         {
-            ObjectPooling.Instance.ReturnToPool(gameObject.name, gameObject);
+            ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
         }
         
         /*

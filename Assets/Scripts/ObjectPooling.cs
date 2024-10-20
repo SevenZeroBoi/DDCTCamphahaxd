@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class ObjectPooling : MonoBehaviour
 {
-    public static ObjectPooling Instance;
+    public static ObjectPooling instance;
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
     }
 
     private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();

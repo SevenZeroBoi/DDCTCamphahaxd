@@ -14,6 +14,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
     }
 
+    public bool canStartDialogue = false;
+
+    public TextAsset textJSON;
+
     public bool isDialoguePlaying { get; private set; }
 
     public GameObject dialoguePanel;
@@ -23,17 +27,6 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         isDialoguePlaying = false;
-    }
-
-    private void Update()
-    {
-        if (isDialoguePlaying)
-        {
-            if (Input.GetKeyDown(KeyCode.Return)) //trigger dialouge
-            {
-                ContinueStory();
-            }
-        }
     }
 
     public void EnterDialogueMode(TextAsset inkJSON)
@@ -50,6 +43,18 @@ public class DialogueManager : MonoBehaviour
         isDialoguePlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+    }
+
+    void BeginDialogue()
+    {
+        if (canStartDialogue)
+        {
+            if (Input.GetKeyDown(KeyCode.Return)) //start dialog
+            {
+                EnterDialogueMode(textJSON);
+                canStartDialogue = false;
+            }
+        }
     }
 
     void ContinueStory()
