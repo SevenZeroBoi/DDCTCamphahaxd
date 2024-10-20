@@ -84,12 +84,12 @@ public class MouseScript : MonoBehaviour
 
     void CheckShelfTag()
     {
-        for (int i = 0; i < ItemStorage.Instance.selfList.Length ; i++)
+        for (int i = 0; i < ItemStorage.Instance.shelfList.Length ; i++)
         {
             if (currentMousePosition == "NONE") break;
-            else if (ItemStorage.Instance.selfList[i].tag == currentMousePosition)
+            else if (ItemStorage.Instance.shelfList[i].tag == currentMousePosition)
             {
-                holdingItem = ObjectPooling.Instance.GetFromPool(ItemStorage.Instance.itemOnSelf[i].name, ItemStorage.Instance.itemOnSelf[i]
+                holdingItem = ObjectPooling.Instance.GetFromPool(ItemStorage.Instance.itemOnShelf[i].name, ItemStorage.Instance.itemOnShelf[i]
                     , boxcheck.transform.position, Quaternion.identity);
                 break;
             }

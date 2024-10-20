@@ -12,9 +12,9 @@ public class ItemStorage : MonoBehaviour
         Instance = this;
     }
 
-    public GameObject[] selfList;
-    public GameObject[] selfLocationCheck;
-    public GameObject[] itemOnSelf;
+    public GameObject[] shelfList;
+    public GameObject[] shelfLocationCheck;
+    public GameObject[] itemOnShelf;
 
     private void Update()
     {
@@ -27,19 +27,19 @@ public class ItemStorage : MonoBehaviour
     public void RandomizeJarLocation()
     {
         System.Random randomvar = new System.Random();
-        int n = selfList.Length;
+        int n = shelfList.Length;
 
         for (int i = n - 1; i > 0; i--)
         {
             int j = randomvar.Next(0, i + 1);
-            GameObject temp = selfList[i];
-            selfList[i] = selfList[j];
-            selfList[j] = temp;
+            GameObject temp = shelfList[i];
+            shelfList[i] = shelfList[j];
+            shelfList[j] = temp;
         }
 
-        for (int i = 0; i < selfList.Length; i++)
+        for (int i = 0; i < shelfList.Length; i++)
         {
-            selfList[i].transform.position = selfLocationCheck[i].transform.position;
+            shelfList[i].transform.position = shelfLocationCheck[i].transform.position;
         }
 
     }

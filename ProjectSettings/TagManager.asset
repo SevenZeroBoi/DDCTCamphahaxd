@@ -48,3 +48,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Map
+    uniqueID: 1017391497
+    locked: 0
+  - name: MapObject
+    uniqueID: 1740871655
+    locked: 0
+  - name: FarObject
+    uniqueID: 467995887
+    locked: 0
