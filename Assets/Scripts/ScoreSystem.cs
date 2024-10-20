@@ -33,7 +33,7 @@ public class ScoreSystem : MonoBehaviour
         GameStates.instance.currentTimeCount += Time.deltaTime;
         if (GameStates.instance.currentCustomer == null)
         {
-            SummonNPCs(UnityEngine.Random.Range(0, 4));
+            SummonNPCs(UnityEngine.Random.Range(0, npcs.Length));
         }
         else
         {

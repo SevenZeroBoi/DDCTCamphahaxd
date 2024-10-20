@@ -22,6 +22,8 @@ public class OvenScript : MonoBehaviour
         }
         else
         {
+            
+            OvenTriggering();
             //click to trigger the oven -> isTheOvenStart = true -> time.deltatime
         }
     }
@@ -40,23 +42,39 @@ public class OvenScript : MonoBehaviour
 
 
     public int currentClickTimes = 0;
-    int needClickTimes;
+    int neededClickTimes = 10;
     bool isTheRecipeCorrect;
+    public bool CanAddClickCounting = false;
     public void OvenTriggering()
     {
-        //play animation
-        currentClickTimes++;
-        if (currentClickTimes >= needClickTimes)
+        if (currentClickTimes >= neededClickTimes)
         {
             currentClickTimes = 0;
             //change to ovenning
+            CanAddClickCounting = false;
         }
+        else
+        {
+            if (Input.GetMouseButtonDown(0) && !GameStates.instance.isMouseOnHolding)
+            {
+                currentClickTimes++;
+            }
+        }
+
+        if (CanAddClickCounting)
+        {
+            GameStates.instance.isOvenStarting = true;
+        }
+
+
+
     }
 
 
 
 
     bool canAddMoreItem = false;
+    int currentItemInOvenCounts;
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ITEMS" && !GameStates.instance.isOvenStarting)

@@ -53,6 +53,12 @@ TagManager:
   - name: Map
     uniqueID: 1017391497
     locked: 0
+  - name: Character
+    uniqueID: 1659900121
+    locked: 0
+  - name: MapMorefront
+    uniqueID: 3637656623
+    locked: 0
   - name: MapObject
     uniqueID: 1740871655
     locked: 0

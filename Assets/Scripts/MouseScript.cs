@@ -35,7 +35,7 @@ public class MouseScript : MonoBehaviour
             GameStates.instance.isMouseOnHolding = true;
             CheckShelfTag();
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && GameStates.instance.isMouseOnHolding)
         {
             GameStates.instance.isMouseOnHolding = false;
             if (holdingItem != null) holdingItem.GetComponent<ItemScript>().MovementChange();
@@ -48,11 +48,13 @@ public class MouseScript : MonoBehaviour
             holdingItem.transform.position = boxcheck.transform.position;
         }
         */
-
-        if (Input.GetMouseButtonDown(0) && CanAddClickCounting && !GameStates.instance.isMouseOnHolding)
+/*
+        if (Input.GetMouseButtonDown(0) && OvenScript.instance.CanAddClickCounting && !GameStates.instance.isMouseOnHolding)
         {
             OvenScript.instance.currentClickTimes++;
-        }
+        }*/
+
+
     }
 
     /*
@@ -96,12 +98,11 @@ public class MouseScript : MonoBehaviour
 
 
 
-    bool CanAddClickCounting = false;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "OVEN")
         {
-            CanAddClickCounting = true;
+            OvenScript.instance.CanAddClickCounting = true;
         }
     }
 
@@ -109,7 +110,7 @@ public class MouseScript : MonoBehaviour
     {
         if (other.gameObject.tag == "OVEN")
         {
-            CanAddClickCounting = false;
+            OvenScript.instance.CanAddClickCounting = false;
         }
     }
 
