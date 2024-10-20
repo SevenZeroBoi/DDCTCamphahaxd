@@ -12,7 +12,7 @@ public class ItemScript : MonoBehaviour
         rb.gravityScale = 0;
     }
 
-    bool isStillHolding = true;
+    public bool isStillHolding = true;
     public void MovementChange()
     {
         rb.gravityScale = 4;
@@ -38,5 +38,12 @@ public class ItemScript : MonoBehaviour
         {
             ObjectPooling.Instance.ReturnToPool(gameObject.name, gameObject);
         }
+        
+        /*
+        if (collision.gameObject.tag == "OVEN")
+        {
+            transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 9);
+        }
+        */
     }
 }

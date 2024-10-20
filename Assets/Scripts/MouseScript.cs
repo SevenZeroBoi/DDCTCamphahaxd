@@ -16,7 +16,7 @@ public class MouseScript : MonoBehaviour
     public string currentMousePosition = "NONE";
     public GameObject boxcheck;
 
-    [HideInInspector] public GameObject holdingItem = null;
+    public GameObject holdingItem = null;
 
     private bool isItemOnHold = false;
 
@@ -53,6 +53,11 @@ public class MouseScript : MonoBehaviour
             holdingItem.transform.position = boxcheck.transform.position;
         }
         */
+
+        if (Input.GetMouseButtonDown(0) && CanAddClickCounting)
+        {
+            OvenScript.instance.currentClickTimes++;
+        }
     }
 
     void FollowingText()
@@ -84,7 +89,7 @@ public class MouseScript : MonoBehaviour
             if (currentMousePosition == "NONE") break;
             else if (ItemStorage.Instance.selfList[i].tag == currentMousePosition)
             {
-                holdingItem = ObjectPooling.Instance.GetFromPool(ItemStorage.Instance.selfList[i].name, ItemStorage.Instance.selfList[i]
+                holdingItem = ObjectPooling.Instance.GetFromPool(ItemStorage.Instance.itemOnSelf[i].name, ItemStorage.Instance.itemOnSelf[i]
                     , boxcheck.transform.position, Quaternion.identity);
                 break;
             }
@@ -92,7 +97,22 @@ public class MouseScript : MonoBehaviour
         }
     }
 
+    bool CanAddClickCounting = false;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "OVEN")
+        {
+            CanAddClickCounting = true;
+        }
+    }
 
-   
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "OVEN")
+        {
+            CanAddClickCounting = false;
+        }
+    }
+
 }
 

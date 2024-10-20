@@ -16,6 +16,13 @@ public class ItemStorage : MonoBehaviour
     public GameObject[] selfLocationCheck;
     public GameObject[] itemOnSelf;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RandomizeJarLocation();
+        }
+    }
 
     public void RandomizeJarLocation()
     {

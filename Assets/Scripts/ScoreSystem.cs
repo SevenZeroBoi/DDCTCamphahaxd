@@ -17,8 +17,6 @@ public class ScoreSystem : MonoBehaviour
     public int currentGameDay;
     
 
-    
-
     void CheckScorePerDay()
     {
         if (currentGameScore < scoreperday)
