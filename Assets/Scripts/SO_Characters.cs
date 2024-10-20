@@ -17,4 +17,9 @@ public class SO_Characters : ScriptableObject
     public TextAsset textForMaw;
     public TextAsset textForPeeper;
 
+    public TextAsset possibleQuestion;
+    public string[] possibleAnswer;
+
+    
+
 }

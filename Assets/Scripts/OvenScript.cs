@@ -44,6 +44,7 @@ public class OvenScript : MonoBehaviour
 
     public int currentClickTimes = 0;
     int needClickTimes;
+    bool isTheRecipeCorrect;
     public void OvenTriggering()
     {
         //play animation
@@ -55,13 +56,33 @@ public class OvenScript : MonoBehaviour
         }
     }
 
-    public string[] wordList;
+    public string wordLength;
     public string pickedWord;
     public string currentWord;
     void WhileOvening()
     {
-        
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+
+        }
     }
+
+    
 
 
     private void OnTriggerStay2D(Collider2D collision)
