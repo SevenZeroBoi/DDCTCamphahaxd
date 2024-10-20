@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterScript : MonoBehaviour
@@ -29,7 +30,7 @@ public class CharacterScript : MonoBehaviour
     {
         if (animState.name == "npcidle" && !isOrder)
         {
-            CharacterOrder();
+            Invoke("CharacterOrder", 2f);
             isOrder = true;
         }
 
@@ -50,8 +51,14 @@ public class CharacterScript : MonoBehaviour
         }
     }
 
+
+    GameObject itemWanted;
     void CharacterOrder()
     {
+        int randomitemwanted = Random.Range(0, CombinationSystem.instance.combindingItems.Count);
+        itemWanted = CombinationSystem.instance.combindingItems.ElementAt(randomitemwanted).Key;
+        CombinationSystem.instance.currentItemCode = CombinationSystem.instance.combindingItems.ElementAt(randomitemwanted).Value.ToList();
         DialogueManager.instance.EnterDialogueMode(DialogueTest);
+        
     }
 }

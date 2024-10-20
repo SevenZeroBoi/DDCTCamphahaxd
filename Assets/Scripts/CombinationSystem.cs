@@ -8,7 +8,7 @@ public class CombinationSystem : MonoBehaviour
     public static CombinationSystem instance;
 
 
-    private Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]> ();
+    public Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]> ();
     [HideInInspector] public List<string> currentItemCode = new List<string>();
 
     public GameObject[] mainIngredients;

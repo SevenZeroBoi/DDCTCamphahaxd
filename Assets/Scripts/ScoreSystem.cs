@@ -54,8 +54,16 @@ public class ScoreSystem : MonoBehaviour
     }
     void CheckCurrentGameTime()
     {
-        currentGameTime += Time.deltaTime;
+        if (currentGameTime < 2) currentGameTime += Time.deltaTime;
+
     }
+
+    GameObject currentItemWanted;
+    void CheckWantedItem()
+    {
+        
+    }
+    
     public void AddingScore (int fullscore, int correctpercentage)
     {
         currentGameScore += fullscore * (correctpercentage / 100);
