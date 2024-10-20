@@ -25,6 +25,7 @@ public class ObjectPooling : MonoBehaviour
         else
         {
             GameObject newObject = Instantiate(prefab, position, rotation);
+            newObject.name = prefab.name;
             return newObject;
         }
     }

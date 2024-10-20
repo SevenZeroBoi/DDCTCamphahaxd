@@ -32,7 +32,6 @@ public class OvenScript : MonoBehaviour
         if (other.gameObject.tag == "ITEMS" && !GameStates.instance.isOvenStarting && !other.gameObject.GetComponent<ItemScript>().isStillHolding)
         {
             GameStates.instance.currentItemCode.Add(other.gameObject.name);
-            other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, transform.position, Time.deltaTime * 10);
             GameStates.instance.isOvenStarting = false;
         }
 

@@ -7,8 +7,14 @@ using Unity.VisualScripting;using UnityEngine;
 public class ScoreSystem : MonoBehaviour
 {
     public static ScoreSystem instance;
-
-
+    private void Awake()
+    {
+        instance = this;
+    }
+    void PreDayStart()
+    {
+        //play animation
+    }
     void DayStart()
     {
         GameStates.instance.currentTimeCount += Time.deltaTime;

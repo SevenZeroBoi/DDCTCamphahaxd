@@ -11,6 +11,8 @@ TagManager:
   - MUSCLE
   - BASE
   - OVEN
+  - BORDER
+  - ITEMS
   layers:
   - Default
   - TransparentFX

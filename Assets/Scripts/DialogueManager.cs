@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Ink.Runtime;
+using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
-    private void Awake()
+    void OnEnable()
     {
         instance = this;
         dialoguePanel.SetActive(false);
@@ -45,17 +46,6 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
     }
 
-    void BeginDialogue()
-    {
-        if (canStartDialogue)
-        {
-            if (Input.GetKeyDown(KeyCode.Return)) //start dialog
-            {
-                EnterDialogueMode(textJSON);
-                canStartDialogue = false;
-            }
-        }
-    }
 
     void ContinueStory()
     {

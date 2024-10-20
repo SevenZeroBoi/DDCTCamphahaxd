@@ -10,9 +10,10 @@ public class ItemScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
+        isStillHolding = true;
     }
 
-    public bool isStillHolding = true;
+    [HideInInspector] public bool isStillHolding = true;
     public void MovementChange()
     {
         rb.gravityScale = 4;
@@ -30,7 +31,12 @@ public class ItemScript : MonoBehaviour
         else if (canMoveToTheOven)
         {
             transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 9);
-            if (transform.position == OvenScript.instance.gameObject.transform.position) ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
+            if (transform.position == OvenScript.instance.gameObject.transform.position)
+            {
+                rb.gravityScale = 0;
+                isStillHolding = true;
+                ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
+            }
             //go to the oven
         }
     }
@@ -38,11 +44,14 @@ public class ItemScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "BORDER")
         {
+            rb.gravityScale = 0;
+            isStillHolding = true;
             ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
         }
 
-        if (collision.gameObject.tag == "OVEN")
+        if (collision.gameObject.tag == "OVEN" && !isStillHolding)
         {
+            rb.gravityScale = 0;
             canMoveToTheOven = true;
         }
     }
