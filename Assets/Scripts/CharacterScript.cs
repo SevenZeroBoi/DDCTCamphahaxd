@@ -45,13 +45,11 @@ public class CharacterScript : MonoBehaviour
         }
     }
 
-
-    GameObject itemWanted;
     void CharacterOrder()
     {
         int randomitemwanted = Random.Range(0, ItemStorage.instance.combindingItems.Count);
-        itemWanted = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key;
-        ItemStorage.instance.currentItemCode = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Value.ToList();
+        GameStates.instance.currentNeededItem = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key;
+        GameStates.instance.currentItemCode = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Value.ToList();
         DialogueManager.instance.EnterDialogueMode(DialogueTest);
         
     }

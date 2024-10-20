@@ -31,7 +31,7 @@ public class OvenScript : MonoBehaviour
     {
         if (other.gameObject.tag == "ITEMS" && !GameStates.instance.isOvenStarting && !other.gameObject.GetComponent<ItemScript>().isStillHolding)
         {
-            ItemStorage.instance.currentItemCode.Add(other.gameObject.name);
+            GameStates.instance.currentItemCode.Add(other.gameObject.name);
             other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, transform.position, Time.deltaTime * 10);
             GameStates.instance.isOvenStarting = false;
         }
@@ -64,7 +64,7 @@ public class OvenScript : MonoBehaviour
         {
             if (Input.GetMouseButtonUp(0) && canAddMoreItem)
             {
-                ItemStorage.instance.currentItemCode.Add(collision.gameObject.name);
+                GameStates.instance.currentItemCode.Add(collision.gameObject.name);
                 collision.gameObject.transform.position = Vector3.MoveTowards(collision.transform.position, transform.position, Time.deltaTime * 10);
                 canAddMoreItem =false;
             }

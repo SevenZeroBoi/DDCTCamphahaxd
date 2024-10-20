@@ -16,19 +16,32 @@ public class ItemStorage : MonoBehaviour
     public GameObject[] shelfList;
     public GameObject[] shelfLocationCheck;
     public GameObject[] itemOnShelf;
-
-    public Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]>();
-    [HideInInspector] public List<string> currentItemCode = new List<string>();
-
     public GameObject[] mainIngredients;
     public GameObject[] elementIngredients;
     public GameObject[] allResults;
 
-    private void Update()
+    public Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]>();
+    void SetUpRecipes()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        for (int i = 0; i < mainIngredients.Length; i++)
         {
-            RandomizeJarLocation();
+            combindingItems.Add(allResults[i], new string[] { mainIngredients[0].name, mainIngredients[i].name });
+            combindingItems.Add(allResults[i + 5], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[0].name });
+            combindingItems.Add(allResults[i + 10], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[1].name });
+            combindingItems.Add(allResults[i + 15], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[2].name });
+        }
+    }
+
+    public void CheckCombineItem()
+    {
+        foreach (var num in combindingItems)
+        {
+            if (GameStates.instance.currentItemCode.ToArray() == num.Value)
+            {
+                //New item get lolx dd
+                GameStates.instance.currentItemCode = null;
+                break;
+            }
         }
     }
 
@@ -50,30 +63,5 @@ public class ItemStorage : MonoBehaviour
             shelfList[i].transform.position = shelfLocationCheck[i].transform.position;
         }
 
-    }
-
-    void SetUpRecipes()
-    {
-        for (int i = 0; i < mainIngredients.Length; i++)
-        {
-            combindingItems.Add(allResults[i], new string[] { mainIngredients[0].name, mainIngredients[i].name });
-            combindingItems.Add(allResults[i + 5], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[0].name });
-            combindingItems.Add(allResults[i + 10], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[1].name });
-            combindingItems.Add(allResults[i + 15], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[2].name });
-        }
-    }
-
-    public void CheckCombineItem()
-    {
-        foreach (var num in combindingItems)
-        {
-            if (currentItemCode.ToArray() == num.Value)
-            {
-                //New item get lolx dd
-                currentItemCode = null;
-                break;
-
-            }
-        }
     }
 }

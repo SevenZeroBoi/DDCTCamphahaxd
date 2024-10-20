@@ -19,6 +19,7 @@ public class ItemScript : MonoBehaviour
         isStillHolding = false;
     }
 
+    bool canMoveToTheOven = false;
     private void Update()
     {
         if (isStillHolding)
@@ -26,9 +27,10 @@ public class ItemScript : MonoBehaviour
             //transform.position = Vector3.MoveTowards(transform.position, MouseScript.instance.boxcheck.transform.position, Time.deltaTime * 5);
             transform.position = MouseScript.instance.boxcheck.transform.position;
         }
-        else
+        else if (canMoveToTheOven)
         {
-            
+            transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 9);
+            if (transform.position == OvenScript.instance.gameObject.transform.position) ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
             //go to the oven
         }
     }
@@ -38,12 +40,10 @@ public class ItemScript : MonoBehaviour
         {
             ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
         }
-        
-        /*
+
         if (collision.gameObject.tag == "OVEN")
         {
-            transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 9);
+            canMoveToTheOven = true;
         }
-        */
     }
 }
