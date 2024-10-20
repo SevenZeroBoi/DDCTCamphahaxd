@@ -9,21 +9,49 @@ public class CharacterScript : MonoBehaviour
         WAITING, COMPLETE, WRONGITEM, TIMEOUT
     }
 
-    void ChracterEnterTheStore()
+
+    public TextAsset DialogueTest;
+
+    AnimationState animState;
+    Animator anim;
+
+    public float countdownCheck;
+
+    public bool isOrder = false;
+    public bool isGettingItem = false;
+    private void Start()
     {
-        //play anim of walking in
+        anim = GetComponent<Animator>();
+        animState = GetComponent<AnimationState>();
     }
 
-    void PlayingWaiting()
+    private void Update()
     {
-        //time deltatime -> if complete -> complete
-        //if correct -> send out
+        if (animState.name == "npcidle" && !isOrder)
+        {
+            CharacterOrder();
+            isOrder = true;
+        }
 
+        if (isOrder)
+        {
+            countdownCheck -= Time.deltaTime;
+            if (countdownCheck <= 0)
+            {
 
+            }
+
+            if (isGettingItem)
+            {
+
+            }
+
+            
+        }
     }
 
-    void WrongItem()
+    void CharacterOrder()
     {
-
+        DialogueManager.instance.EnterDialogueMode(DialogueTest);
     }
 }

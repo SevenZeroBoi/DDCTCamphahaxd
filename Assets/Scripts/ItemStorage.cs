@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,6 +24,12 @@ public class ItemStorage : MonoBehaviour
             RandomizeJarLocation();
         }
     }
+
+
+    public float rangeBetweenJarX;
+    public float rangeBetweenJarY;
+
+
 
     public void RandomizeJarLocation()
     {

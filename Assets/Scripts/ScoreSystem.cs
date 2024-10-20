@@ -2,9 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEngine;
+using Unity.VisualScripting;using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour
 {
@@ -15,7 +13,28 @@ public class ScoreSystem : MonoBehaviour
 
     public float currentGameTime;
     public int currentGameDay;
-    
+
+    GameObject NPCObject = null;
+
+    void DayStart()
+    {
+        currentGameTime += Time.deltaTime;
+        if (NPCObject == null)
+        {
+            SummonNPCs(UnityEngine.Random.Range(0, 4));
+        }
+        else
+        {
+
+        }
+    }
+
+    public GameObject[] npcs;
+    void SummonNPCs(int npcnumber)
+    {
+        NPCObject = ObjectPooling.Instance.GetFromPool(npcs[npcnumber].name, npcs[npcnumber], Vector3.zero, Quaternion.identity);
+    }
+
 
     void CheckScorePerDay()
     {
@@ -33,8 +52,6 @@ public class ScoreSystem : MonoBehaviour
     {
         // adding new quota // time speed up for npcs
     }
-
-
     void CheckCurrentGameTime()
     {
         currentGameTime += Time.deltaTime;
@@ -54,7 +71,5 @@ public class ScoreSystem : MonoBehaviour
         ScoreRequired.text = Convert.ToString(scoreperday);
     }
 
-    
 
-    
 }
