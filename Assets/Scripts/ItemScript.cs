@@ -21,7 +21,7 @@ public class ItemScript : MonoBehaviour
         isStillHolding = false;
     }
 
-    bool canMoveToTheOven = false;
+    public bool canMoveToTheOven = false;
     private void Update()
     {
         if (isStillHolding)
@@ -31,13 +31,14 @@ public class ItemScript : MonoBehaviour
         }
         else if (canMoveToTheOven)
         {
-            transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 9);
+            transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 11);
             if (transform.position == OvenScript.instance.gameObject.transform.position)
             {
                 ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
             }
             //go to the oven
         }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,4 +54,5 @@ public class ItemScript : MonoBehaviour
             canMoveToTheOven = true;
         }
     }
+
 }

@@ -1,0 +1,1 @@
+I want a friend please,,, he’s going to be in good hands..

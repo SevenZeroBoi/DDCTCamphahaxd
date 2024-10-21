@@ -21,6 +21,13 @@ public class ItemStorage : MonoBehaviour
     public GameObject[] allResults;
 
     public Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]>();
+    void SetUpShelfLocation()
+    {
+        for (int i = 0; i < shelfList.Length; i++)
+        {
+            shelfList[i].transform.position = shelfLocationCheck[i].transform.position;
+        }
+    }
     void SetUpRecipes()
     {
         for (int i = 0; i < mainIngredients.Length; i++)

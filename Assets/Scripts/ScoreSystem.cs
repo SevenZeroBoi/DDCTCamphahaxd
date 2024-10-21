@@ -62,4 +62,10 @@ public class ScoreSystem : MonoBehaviour
     }
 
 
+    int checkingscore(int correctcount,int allcount)
+    {
+
+        return 
+    }
+
 }

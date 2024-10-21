@@ -15,7 +15,6 @@ public class CharacterScript : MonoBehaviour
 
     Animator anim;
 
-    public float countdownCheck = 5f;
 
     public TextAsset pickText;
 
@@ -30,17 +29,6 @@ public class CharacterScript : MonoBehaviour
         {
             CharacterOrder();
             GameStates.instance.isCharacterOrder = true;
-        }
-
-        if (GameStates.instance.isCharacterOrder)
-        {
-            countdownCheck -= Time.deltaTime;
-            if (countdownCheck <= 0)
-            {
-                countdownCheck = 5;
-            }
-
-            
         }
     }
     public void CharacterOrder()

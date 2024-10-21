@@ -12,6 +12,13 @@ public class OvenScript : MonoBehaviour
         instance = this;
     }
 
+    public int currentClickTimes = 0;
+    int neededClickTimes = 10;
+    bool isTheRecipeCorrect;
+    public bool CanAddClickCounting = false;
+    bool canAddMoreItem = false;
+    float cooldownCheck = 0;
+
 
     private void Update()
     {
@@ -22,29 +29,12 @@ public class OvenScript : MonoBehaviour
         }
         else
         {
-            
             OvenTriggering();
             //click to trigger the oven -> isTheOvenStart = true -> time.deltatime
         }
     }
 
-    float cooldownCheck = 0;
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "ITEMS" && !GameStates.instance.isOvenStarting && !other.gameObject.GetComponent<ItemScript>().isStillHolding)
-        {
-            GameStates.instance.currentItemCode.Add(other.gameObject.name);
-            GameStates.instance.isOvenStarting = false;
-        }
 
-        
-    }
-
-
-    public int currentClickTimes = 0;
-    int neededClickTimes = 10;
-    bool isTheRecipeCorrect;
-    public bool CanAddClickCounting = false;
     public void OvenTriggering()
     {
         if (currentClickTimes >= neededClickTimes)
@@ -64,39 +54,23 @@ public class OvenScript : MonoBehaviour
         if (CanAddClickCounting)
         {
             GameStates.instance.isOvenStarting = true;
+
         }
 
 
 
     }
 
-
-
-
-    bool canAddMoreItem = false;
-    int currentItemInOvenCounts;
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "ITEMS" && !GameStates.instance.isOvenStarting)
+        if (other.gameObject.tag == "ITEMS" && canAddMoreItem && !other.gameObject.GetComponent<ItemScript>().isStillHolding && !GameStates.instance.isOvenStarting)
         {
-            if (Input.GetMouseButtonUp(0) && canAddMoreItem)
-            {
-                GameStates.instance.currentItemCode.Add(collision.gameObject.name);
-                collision.gameObject.transform.position = Vector3.MoveTowards(collision.transform.position, transform.position, Time.deltaTime * 10);
-                canAddMoreItem =false;
-            }
+            GameStates.instance.currentItemCode.Add(other.gameObject.name);
         }
 
-        if (!canAddMoreItem && !GameStates.instance.isOvenStarting)
-        {
-            cooldownCheck += Time.deltaTime;
-            if (cooldownCheck > 1)
-            {
-                canAddMoreItem = true;
-                cooldownCheck = 0;
-            }
-        }
+
     }
+
 
 
 }
