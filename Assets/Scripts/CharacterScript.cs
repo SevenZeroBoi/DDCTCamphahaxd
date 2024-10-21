@@ -49,7 +49,6 @@ public class CharacterScript : MonoBehaviour
         int randomitemwanted = Random.Range(0, ItemStorage.instance.combindingItems.Count);
         GameObject currentItem = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key;
         GameStates.instance.currentNeededItem = currentItem;
-        GameStates.instance.currentItemCode = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Value.ToList();
         DialogueManager.instance.EnterDialogueMode(pickText[ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key]);
         GameStates.instance.isCharacterOrder = true;
 

@@ -12,13 +12,19 @@ public class OvenScript : MonoBehaviour
         instance = this;
     }
 
+    public GameObject ovenCenter;
+    
+
     public int currentClickTimes = 0;
     int neededClickTimes = 10;
-    bool isTheRecipeCorrect;
     public bool CanAddClickCounting = false;
-    bool canAddMoreItem = false;
     float cooldownCheck = 0;
 
+    public Animator anim;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -35,15 +41,17 @@ public class OvenScript : MonoBehaviour
     }
 
 
+    float cooldowncheck = 4;
+    float currentcooldown = 0;
     public void OvenTriggering()
     {
         if (currentClickTimes >= neededClickTimes)
         {
             currentClickTimes = 0;
-            //change to ovenning
-            CanAddClickCounting = false;
+            anim.SetTrigger("oven");
+            //change to ovenningae;
         }
-        else
+        else if (!CanAddClickCounting)
         {
             if (Input.GetMouseButtonDown(0) && !GameStates.instance.isMouseOnHolding)
             {
@@ -51,20 +59,29 @@ public class OvenScript : MonoBehaviour
             }
         }
 
-        if (CanAddClickCounting)
+        if (!CanAddClickCounting)
         {
             GameStates.instance.isOvenStarting = true;
-
         }
 
+        if (GameStates.instance.isOvenStarting)
+        {
+            currentcooldown += Time.deltaTime;
+            if (currentcooldown >= cooldowncheck)
+            {
+                GameStates.instance.isOvenStarting = false;
+                anim.SetTrigger("idle");
+            }
+        }
 
 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "ITEMS" && canAddMoreItem && !other.gameObject.GetComponent<ItemScript>().isStillHolding && !GameStates.instance.isOvenStarting)
+        if (other.gameObject.tag == "ITEMS" && !other.gameObject.GetComponent<ItemScript>().isStillHolding && !GameStates.instance.isOvenStarting)
         {
+            
             GameStates.instance.currentItemCode.Add(other.gameObject.name);
         }
 
