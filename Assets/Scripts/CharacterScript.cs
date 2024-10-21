@@ -1,3 +1,5 @@
+using Live2D.Cubism.Core;
+using Live2D.Cubism.Framework.Motion;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,14 @@ public class CharacterScript : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        /*
+        var motion = CubismMotion.CreateFromJson("Assets/Live2D/Motions/your_animation.motion3.json");
+
+        var model = GetComponent<CubismModel>();
+
+        var motionController = model.gameObject.AddComponent<CubismMotionController>();
+        motionController.Play(motion);*/
     }
 
     private void Update()
@@ -39,4 +49,8 @@ public class CharacterScript : MonoBehaviour
         GameStates.instance.isCharacterOrder = true;
         DialogueManager.instance.EnterDialogueMode(DialogueTest);
     }
+    
+
 }
+
+
