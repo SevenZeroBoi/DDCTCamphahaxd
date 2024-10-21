@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using TMPro;
-using Unity.VisualScripting;using UnityEngine;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class ScoreSystem : MonoBehaviour
     }
 
     public GameObject dayText;
+    public GameObject dayBackground;
 
     private void Update()
     {
@@ -29,15 +32,19 @@ public class ScoreSystem : MonoBehaviour
     }
     void DayStart()
     {
-        GameStates.instance.currentTimeCount += Time.deltaTime;
-        if (GameStates.instance.currentCustomer == null)
+        
+        if (GameStates.instance.currentCustomer == null && !GameStates.instance.isStoreisClosed)
         {
             SummonNPCs(UnityEngine.Random.Range(0, npcsList.Length));
         }
+
+        if (GameStates.instance.currentTimeCount >= 60)
+        {
+            GameStates.instance.isStoreisClosed = true;
+        }
         else
         {
-            
-            
+            GameStates.instance.currentTimeCount += Time.deltaTime;
         }
     }
     void ContinueDialogue()

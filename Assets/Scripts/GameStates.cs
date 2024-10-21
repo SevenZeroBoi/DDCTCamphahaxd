@@ -15,6 +15,8 @@ public class GameStates : MonoBehaviour
     public bool isCharacterOrder;
     public bool isMouseOnHolding;
     public bool isOvenStarting;
+    public bool isStoreisClosed;
+    public bool isStoreFullyClosed;
 
     [Header("Score System")]
     public int scoreCounts;
