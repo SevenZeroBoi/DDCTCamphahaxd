@@ -1,0 +1,23 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Peeper.moc3",
+		"Textures": [
+			"Peeper.1024/texture_00.png"
+		],
+		"Physics": "Peeper.physics3.json",
+		"DisplayInfo": "Peeper.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	]
+}

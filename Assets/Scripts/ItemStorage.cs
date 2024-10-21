@@ -11,18 +11,22 @@ public class ItemStorage : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        SetUpShelfLocation();
+        SetUpRecipes();
     }
 
     public GameObject[] shelfList;
     public GameObject[] shelfLocationCheck;
     public GameObject[] itemOnShelf;
     public GameObject[] mainIngredients;
-    public GameObject[] elementIngredients;
+    //public GameObject[] elementIngredients;
     public GameObject[] allResults;
 
     public Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]>();
     void SetUpShelfLocation()
     {
+       
         for (int i = 0; i < shelfList.Length; i++)
         {
             shelfList[i].transform.position = shelfLocationCheck[i].transform.position;
@@ -30,12 +34,13 @@ public class ItemStorage : MonoBehaviour
     }
     void SetUpRecipes()
     {
+        mainIngredients = itemOnShelf;
         for (int i = 0; i < mainIngredients.Length; i++)
         {
             combindingItems.Add(allResults[i], new string[] { mainIngredients[0].name, mainIngredients[i].name });
-            combindingItems.Add(allResults[i + 5], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[0].name });
-            combindingItems.Add(allResults[i + 10], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[1].name });
-            combindingItems.Add(allResults[i + 15], new string[] { mainIngredients[0].name, mainIngredients[i].name, elementIngredients[2].name });
+            combindingItems.Add(allResults[i + 5], new string[] { mainIngredients[0].name, mainIngredients[i].name, "WATER" });
+            combindingItems.Add(allResults[i + 10], new string[] { mainIngredients[0].name, mainIngredients[i].name, "FIRE" });
+            combindingItems.Add(allResults[i + 15], new string[] { mainIngredients[0].name, mainIngredients[i].name, "GROUND" });
         }
     }
 

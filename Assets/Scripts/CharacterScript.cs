@@ -3,6 +3,7 @@ using Live2D.Cubism.Framework.Motion;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class CharacterScript : MonoBehaviour
@@ -13,16 +14,29 @@ public class CharacterScript : MonoBehaviour
     }
 
 
-    public TextAsset DialogueTest;
 
     Animator anim;
 
 
-    public TextAsset pickText;
+    public Dictionary<GameObject,TextAsset> pickText;
+    public TextAsset[] possibleText;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        pickText = new Dictionary<GameObject,TextAsset>();
+        for (int i = 0; i < possibleText.Length; i++)
+        {
+            pickText.Add(ItemStorage.instance.combindingItems.ElementAt(i).Key, possibleText[i]);
+        }
+        for (int i = 0; i < possibleText.Length; i++)
+        {
+            pickText.Add(ItemStorage.instance.combindingItems.ElementAt(i + possibleText.Length).Key, possibleText[i]);
+        }
+        for (int i = 0; i < possibleText.Length; i++)
+        {
+            pickText.Add(ItemStorage.instance.combindingItems.ElementAt(i + (2*possibleText.Length)).Key, possibleText[i]);
+        }
 
         /*
         var motion = CubismMotion.CreateFromJson("Assets/Live2D/Motions/your_animation.motion3.json");
@@ -38,7 +52,6 @@ public class CharacterScript : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("npcidle") && !GameStates.instance.isCharacterOrder)
         {
             CharacterOrder();
-            GameStates.instance.isCharacterOrder = true;
         }
     }
     public void CharacterOrder()
@@ -46,10 +59,11 @@ public class CharacterScript : MonoBehaviour
         int randomitemwanted = Random.Range(0, ItemStorage.instance.combindingItems.Count);
         GameStates.instance.currentNeededItem = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key;
         GameStates.instance.currentItemCode = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Value.ToList();
+        DialogueManager.instance.EnterDialogueMode(pickText[ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key]);
         GameStates.instance.isCharacterOrder = true;
-        DialogueManager.instance.EnterDialogueMode(DialogueTest);
+
     }
-    
+
 
 }
 
