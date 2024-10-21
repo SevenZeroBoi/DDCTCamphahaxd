@@ -26,7 +26,6 @@ public class ScoreSystem : MonoBehaviour
             DayStart();
         }
 
-
     }
     void DayStart()
     {
@@ -37,8 +36,23 @@ public class ScoreSystem : MonoBehaviour
         }
         else
         {
-
+            if (GameStates.instance.currentCustomer.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("waiting") &&
+                GameStates.instance.isCharacterOrder == false)
+            {
+                GameStates.instance.currentCustomer.GetComponent<CharacterScript>().CharacterOrder();
+                DialogueManager.instance.EnterDialogueMode(GameStates.instance.currentCustomer.GetComponent<CharacterScript>().pickText);
+            }
+            else
+            {
+                Invoke("ContinueDialogue", 4);
+            }
+            
+            
         }
+    }
+    void ContinueDialogue()
+    {
+        DialogueManager.instance.ContinueStory();
     }
 
     public GameObject[] npcs;

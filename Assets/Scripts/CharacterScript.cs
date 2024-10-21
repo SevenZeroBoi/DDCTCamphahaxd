@@ -13,20 +13,20 @@ public class CharacterScript : MonoBehaviour
 
     public TextAsset DialogueTest;
 
-    AnimationState animState;
     Animator anim;
 
-    public float countdownCheck;
+    public float countdownCheck = 5f;
+
+    public TextAsset pickText;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        animState = GetComponent<AnimationState>();
     }
 
     private void Update()
     {
-        if (animState.name == "npcidle" && !GameStates.instance.isCharacterOrder)
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("npcidle") && !GameStates.instance.isCharacterOrder)
         {
             CharacterOrder();
             GameStates.instance.isCharacterOrder = true;
@@ -37,22 +37,18 @@ public class CharacterScript : MonoBehaviour
             countdownCheck -= Time.deltaTime;
             if (countdownCheck <= 0)
             {
-
+                countdownCheck = 5;
             }
 
             
         }
     }
-    void DialogueDelay()
-    {
-        //yield return new WaitForSeconds(2);
-        DialogueManager.instance.EnterDialogueMode(DialogueTest);
-    }
-    void CharacterOrder()
+    public void CharacterOrder()
     {
         int randomitemwanted = Random.Range(0, ItemStorage.instance.combindingItems.Count);
         GameStates.instance.currentNeededItem = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key;
         GameStates.instance.currentItemCode = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Value.ToList();
-        Invoke("DialogueDelay", 2);
+        GameStates.instance.isCharacterOrder = true;
+        DialogueManager.instance.EnterDialogueMode(DialogueTest);
     }
 }
