@@ -61,11 +61,4 @@ public class ScoreSystem : MonoBehaviour
         GameStates.instance.currentCustomer = ObjectPooling.instance.GetFromPool(npcs[npcnumber].name, npcs[npcnumber], Vector3.zero, Quaternion.identity);
     }
 
-
-    int checkingscore(int correctcount,int allcount)
-    {
-
-        return 
-    }
-
 }

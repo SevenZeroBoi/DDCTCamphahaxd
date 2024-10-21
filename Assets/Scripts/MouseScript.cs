@@ -38,7 +38,12 @@ public class MouseScript : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && GameStates.instance.isMouseOnHolding)
         {
             GameStates.instance.isMouseOnHolding = false;
-            if (holdingItem != null) holdingItem.GetComponent<ItemScript>().MovementChange();
+            if (holdingItem != null)
+            {
+                holdingItem.GetComponent<ItemScript>().MovementChange();
+                holdingItem.GetComponent<BoxCollider2D>().enabled = false;
+                holdingItem.GetComponent<BoxCollider2D>().enabled = true;
+            }
             holdingItem = null;
         }
 

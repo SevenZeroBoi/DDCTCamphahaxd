@@ -31,7 +31,7 @@ public class ItemScript : MonoBehaviour
         }
         else if (canMoveToTheOven)
         {
-            transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 11);
+            transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.gameObject.transform.position, Time.deltaTime * 20);
             if (transform.position == OvenScript.instance.gameObject.transform.position)
             {
                 ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
@@ -53,6 +53,7 @@ public class ItemScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             canMoveToTheOven = true;
         }
+
     }
 
 }
