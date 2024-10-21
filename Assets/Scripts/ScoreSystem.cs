@@ -32,7 +32,7 @@ public class ScoreSystem : MonoBehaviour
         GameStates.instance.currentTimeCount += Time.deltaTime;
         if (GameStates.instance.currentCustomer == null)
         {
-            SummonNPCs(UnityEngine.Random.Range(0, npcs.Length));
+            SummonNPCs(UnityEngine.Random.Range(0, npcsList.Length));
         }
         else
         {
@@ -44,7 +44,7 @@ public class ScoreSystem : MonoBehaviour
             }
             else
             {
-                Invoke("ContinueDialogue", 4);
+                Invoke("ContinueDialogue", 2);
             }
             
             
@@ -55,10 +55,10 @@ public class ScoreSystem : MonoBehaviour
         DialogueManager.instance.ContinueStory();
     }
 
-    public GameObject[] npcs;
+    public GameObject[] npcsList;
     void SummonNPCs(int npcnumber)
     {
-        GameStates.instance.currentCustomer = ObjectPooling.instance.GetFromPool(npcs[npcnumber].name, npcs[npcnumber], Vector3.zero, Quaternion.identity);
+        GameStates.instance.currentCustomer = ObjectPooling.instance.GetFromPool(npcsList[npcnumber].name, npcsList[npcnumber], Vector3.zero, Quaternion.identity);
     }
 
 }

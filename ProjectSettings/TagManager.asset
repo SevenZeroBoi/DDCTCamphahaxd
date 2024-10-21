@@ -13,6 +13,7 @@ TagManager:
   - OVEN
   - BORDER
   - ITEMS
+  - RESULT
   layers:
   - Default
   - TransparentFX
@@ -67,4 +68,7 @@ TagManager:
     locked: 0
   - name: FrontObject
     uniqueID: 1729727125
+    locked: 0
+  - name: UIObject
+    uniqueID: 2374693149
     locked: 0
