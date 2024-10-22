@@ -29,6 +29,12 @@ public class ScoreSystem : MonoBehaviour
                 GameStates.instance.currentCustomer = null;
             }
         }
+
+        if (DialogueManager.instance.dialogueText.text != "")
+        {
+            Invoke("ContinueDialogue", 5);
+
+        }
     }
     void PreDayStart()
     {

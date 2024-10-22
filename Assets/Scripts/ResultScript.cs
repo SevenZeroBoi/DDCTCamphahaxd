@@ -10,6 +10,11 @@ public class ResultScript : MonoBehaviour
         {
             ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
             GameStates.instance.currentCustomer.GetComponent<Animator>().SetTrigger("walkaway");
+            if (DialogueManager.instance.dialogueText.text != "")
+            {
+                DialogueManager.instance.ExitDialogueMode();
+
+            }
         }
     }
 }
