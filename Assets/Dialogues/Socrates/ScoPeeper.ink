@@ -1,0 +1,1 @@
+I have no sight, yet I see all, I have no voice, yet I tell you tales. I bear witness to every rise and fall, And hold secrets that time unveils

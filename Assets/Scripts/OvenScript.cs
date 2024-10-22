@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OvenScript : MonoBehaviour
 {
@@ -28,6 +26,10 @@ public class OvenScript : MonoBehaviour
     GameObject newObject;
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+        }
 
         {
             OvenTriggering();

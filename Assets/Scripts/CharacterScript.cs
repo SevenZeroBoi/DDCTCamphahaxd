@@ -1,8 +1,6 @@
-using Live2D.Cubism.Core;
-using Live2D.Cubism.Framework.Motion;
+
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class CharacterScript : MonoBehaviour
@@ -17,6 +15,7 @@ public class CharacterScript : MonoBehaviour
     public Dictionary<GameObject, TextAsset> pickText;
     public TextAsset[] possibleText;
 
+    bool kuy = true;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -38,9 +37,11 @@ public class CharacterScript : MonoBehaviour
 
     private void Update()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("npcidle") && !GameStates.instance.isCharacterOrder)
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("npcidle") && kuy)
         {
+            kuy = false;
             CharacterOrder();
+
         }
     }
 
@@ -49,6 +50,8 @@ public class CharacterScript : MonoBehaviour
         int randomitemwanted = Random.Range(0, ItemStorage.instance.combindingItems.Count);
         GameObject currentItem = ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key;
         GameStates.instance.currentNeededItem = currentItem;
+        GameStates.instance.currentItemCode = new List<string>();
+        DialogueManager.instance.ExitDialogueMode();
         DialogueManager.instance.EnterDialogueMode(pickText[ItemStorage.instance.combindingItems.ElementAt(randomitemwanted).Key]);
         GameStates.instance.isCharacterOrder = true;
 

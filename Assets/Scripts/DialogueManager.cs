@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
 using Ink.Runtime;
-using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -58,6 +56,8 @@ public class DialogueManager : MonoBehaviour
             ExitDialogueMode();
         }
     }
+
+
 
     
 }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ResultScript : MonoBehaviour
@@ -10,11 +9,15 @@ public class ResultScript : MonoBehaviour
         {
             ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
             GameStates.instance.currentCustomer.GetComponent<Animator>().SetTrigger("walkaway");
-            if (DialogueManager.instance.dialogueText.text != "")
+            if (gameObject == GameStates.instance.currentNeededItem)
             {
-                DialogueManager.instance.ExitDialogueMode();
-
+                GameStates.instance.scoreCounts += 400;
             }
+            else
+            {
+                GameStates.instance.scoreCounts += 100;
+            }
+            DialogueManager.instance.ExitDialogueMode();
         }
     }
 }

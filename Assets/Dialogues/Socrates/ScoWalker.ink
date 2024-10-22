@@ -1,0 +1,1 @@
+I have a body of pure might, Two legs I stride, but lack a torso's sight. With strength unmatched, I'm known to roam, A fearsome foe, I call the earth my home.

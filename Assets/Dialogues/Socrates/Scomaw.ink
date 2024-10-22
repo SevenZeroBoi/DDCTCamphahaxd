@@ -1,0 +1,1 @@
+I am a hole, but not a pit. I can speak, but lack a wit. I can eat, but have no teeth. I can sing, but have no breath

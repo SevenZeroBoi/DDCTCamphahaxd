@@ -1,0 +1,1 @@
+it’s  a living thing, but not alive, A stress toy, not a pet to thrive. It’s to be squeezed and squished, but don't complain,  A commodity, not a living thing to obtain

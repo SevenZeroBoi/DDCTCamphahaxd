@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 
@@ -23,6 +21,7 @@ public class ItemStorage : MonoBehaviour
     public GameObject[] mainIngredients;
     //public GameObject[] elementIngredients;
     public GameObject[] allResults;
+    public GameObject[] trash;
 
     public Dictionary<GameObject, string[]> combindingItems = new Dictionary<GameObject, string[]>();
     void SetUpShelfLocation()
@@ -38,10 +37,8 @@ public class ItemStorage : MonoBehaviour
         mainIngredients = itemOnShelf;
         for (int i = 0; i < mainIngredients.Length; i++)
         {
-            combindingItems.Add(allResults[i], new string[] { mainIngredients[0].name, mainIngredients[i].name });
-            combindingItems.Add(allResults[i + 5], new string[] { mainIngredients[0].name, mainIngredients[i].name, "WATER" });
-            combindingItems.Add(allResults[i + 10], new string[] { mainIngredients[0].name, mainIngredients[i].name, "FIRE" });
-            combindingItems.Add(allResults[i + 15], new string[] { mainIngredients[0].name, mainIngredients[i].name, "GROUND" });
+            combindingItems.Add(allResults[i], new string[] { mainIngredients[4].name, mainIngredients[i].name });
+            /**/
         }
     }
 
@@ -55,7 +52,7 @@ public class ItemStorage : MonoBehaviour
             }
             else
             {
-                return allResults[UnityEngine.Random.Range(0, allResults.Length)];
+                return trash[UnityEngine.Random.Range(0, trash.Length)];
             }
         }
         return allResults[UnityEngine.Random.Range(0, allResults.Length)];;
