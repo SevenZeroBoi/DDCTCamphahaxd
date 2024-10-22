@@ -99,25 +99,14 @@ public class MouseScript : MonoBehaviour
             }
             
         }
-    }
 
-
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "OVEN")
+        if (currentMousePosition == "OVEN")
         {
             OvenScript.instance.CanAddClickCounting = true;
         }
+        else OvenScript.instance.CanAddClickCounting = false;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "OVEN")
-        {
-            OvenScript.instance.CanAddClickCounting = false;
-        }
-    }
 
 }
 

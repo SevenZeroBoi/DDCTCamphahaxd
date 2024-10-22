@@ -32,7 +32,7 @@ public class ItemScript : MonoBehaviour
         else if (canMoveToTheOven)
         {
             transform.position = Vector3.MoveTowards(transform.position, OvenScript.instance.ovenCenter.transform.position, Time.deltaTime * 20);
-            if (transform.position == OvenScript.instance.gameObject.transform.position)
+            if (transform.position == OvenScript.instance.ovenCenter.transform.position)
             {
                 ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
             }
@@ -47,7 +47,7 @@ public class ItemScript : MonoBehaviour
             ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
         }
 
-        if (collision.gameObject.tag == "OVEN" && !isStillHolding)
+        if (collision.gameObject.tag == "OVEN" && !isStillHolding && GameStates.instance.isCharacterOrder && OvenScript.instance.maxOvenitem < 2 && !GameStates.instance.isOvenStarting)
         {
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, 0);

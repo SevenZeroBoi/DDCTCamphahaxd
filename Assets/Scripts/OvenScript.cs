@@ -27,12 +27,7 @@ public class OvenScript : MonoBehaviour
     GameObject newObject;
     private void Update()
     {
-        if (GameStates.instance.isOvenStarting)
-        {
-            newObject = ItemStorage.instance.CheckCombineItem();
-            GameStates.instance.isOvenStarting = false;
-        }
-        else
+
         {
             OvenTriggering();
             //click to trigger the oven -> isTheOvenStart = true -> time.deltatime
@@ -46,23 +41,22 @@ public class OvenScript : MonoBehaviour
     {
         if (currentClickTimes >= neededClickTimes)
         {
+            GetComponent<BoxCollider2D>().enabled = false;
             anim.SetTrigger("oven");
+            GameStates.instance.isOvenStarting = true;
             //change to ovenningae;
             currentClickTimes = 0;
+            maxOvenitem = 0;
 
         }
-        else
+       
         {
-            if (Input.GetMouseButtonDown(0) && !GameStates.instance.isMouseOnHolding && !GameStates.instance.isOvenStarting && maxOvenitem == 2)
+            if (Input.GetMouseButtonDown(0) && !GameStates.instance.isMouseOnHolding && !GameStates.instance.isOvenStarting && maxOvenitem == 2 && CanAddClickCounting)
             {
                 currentClickTimes++;
+                anim.SetTrigger("shake");
             }
 
-        }
-
-        if (!CanAddClickCounting)
-        {
-            GameStates.instance.isOvenStarting = true;
         }
 
         if (GameStates.instance.isOvenStarting)
@@ -70,12 +64,10 @@ public class OvenScript : MonoBehaviour
             currentcooldown += Time.deltaTime;
             if (currentcooldown >= cooldowncheck)
             {
-                GameStates.instance.isOvenStarting = false;
                 Instantiate(newObject, ovenCenter.transform.position, Quaternion.identity);
                 anim.SetTrigger("idle");
-            }
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime == 1)
-            {
+                GetComponent<BoxCollider2D>().enabled = true;
+                GameStates.instance.isOvenStarting = false;
 
             }
         }
@@ -83,13 +75,15 @@ public class OvenScript : MonoBehaviour
 
     }
 
-    int maxOvenitem;
+    public int maxOvenitem;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "ITEMS" && !other.gameObject.GetComponent<ItemScript>().isStillHolding && !GameStates.instance.isOvenStarting && maxOvenitem < 2)
+        if (other.gameObject.tag == "ITEMS" && !other.gameObject.GetComponent<ItemScript>().isStillHolding && !GameStates.instance.isOvenStarting && maxOvenitem < 2
+            && GameStates.instance.isCharacterOrder)
         {
             GameStates.instance.currentItemCode.Add(other.gameObject.name);
             maxOvenitem++;
+            anim.SetTrigger("shake");
         }
 
 

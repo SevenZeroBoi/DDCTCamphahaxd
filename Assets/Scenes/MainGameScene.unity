@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 204550827}
   - component: {fileID: 204550826}
   - component: {fileID: 204550828}
+  - component: {fileID: 204550829}
   m_Layer: 0
   m_Name: TheOven
   m_TagString: OVEN
@@ -786,6 +787,7 @@ MonoBehaviour:
   currentClickTimes: 0
   CanAddClickCounting: 0
   anim: {fileID: 0}
+  maxOvenitem: 0
 --- !u!61 &204550827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -852,6 +854,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &204550829
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204550823}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &211590832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1687,7 @@ GameObject:
   - component: {fileID: 668957661}
   m_Layer: 0
   m_Name: IMG_5833
-  m_TagString: Untagged
+  m_TagString: WATER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1788,7 +1817,7 @@ GameObject:
   - component: {fileID: 770772076}
   m_Layer: 0
   m_Name: IMG_5834
-  m_TagString: Untagged
+  m_TagString: FIRE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4888,7 +4917,7 @@ GameObject:
   - component: {fileID: 1771552728}
   m_Layer: 0
   m_Name: IMG_5835
-  m_TagString: Untagged
+  m_TagString: GROUND
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
