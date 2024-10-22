@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 6775728264809827567}
   - component: {fileID: 6266866305497003093}
   - component: {fileID: -1456372941069154309}
+  - component: {fileID: -2303704673587855251}
   m_Layer: 0
   m_Name: EyeOfTheOcean
   m_TagString: RESULT
@@ -196,3 +197,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2303704673587855251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535080076199309441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125aef9fcaea2c84e8e92ec2457948a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

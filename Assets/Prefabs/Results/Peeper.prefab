@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3510801951947740961}
   - component: {fileID: 4583999936310914152}
   - component: {fileID: 6984020392761279481}
+  - component: {fileID: 1209651559514347123}
   m_Layer: 0
   m_Name: Peeper
   m_TagString: RESULT
@@ -90,6 +91,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1209651559514347123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614197020219225345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125aef9fcaea2c84e8e92ec2457948a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2002982503656802172
 PrefabInstance:
   m_ObjectHideFlags: 0

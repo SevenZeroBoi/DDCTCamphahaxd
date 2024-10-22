@@ -20,6 +20,15 @@ public class ScoreSystem : MonoBehaviour
     private void Update()
     {
         PreDayStart();
+
+        if (GameStates.instance.currentCustomer != null)
+        {
+            if (GameStates.instance.currentCustomer.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("npcend"))
+            {
+                ObjectPooling.instance.ReturnToPool(GameStates.instance.currentCustomer.name, GameStates.instance.currentCustomer);
+                GameStates.instance.currentCustomer = null;
+            }
+        }
     }
     void PreDayStart()
     {

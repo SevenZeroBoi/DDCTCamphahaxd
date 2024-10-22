@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 5948057196568019775}
   - component: {fileID: 6136873738761119112}
   - component: {fileID: -3125732405883644317}
+  - component: {fileID: -3720826419988165415}
   m_Layer: 0
   m_Name: Urchin
   m_TagString: RESULT
@@ -196,3 +197,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-3720826419988165415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539732556227737372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125aef9fcaea2c84e8e92ec2457948a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

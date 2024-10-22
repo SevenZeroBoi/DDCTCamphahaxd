@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7875927764729511710}
   - component: {fileID: 6939977519233356987}
   - component: {fileID: -8356637770717699829}
+  - component: {fileID: 6156911545812353706}
   m_Layer: 0
   m_Name: Firemeat
   m_TagString: RESULT
@@ -90,6 +91,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6156911545812353706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884159638111443323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125aef9fcaea2c84e8e92ec2457948a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3822326489626793536
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class OvenScript : MonoBehaviour
@@ -41,6 +42,7 @@ public class OvenScript : MonoBehaviour
     {
         if (currentClickTimes >= neededClickTimes)
         {
+            newObject = ItemStorage.instance.CheckCombineItem();
             GetComponent<BoxCollider2D>().enabled = false;
             anim.SetTrigger("oven");
             GameStates.instance.isOvenStarting = true;
@@ -67,6 +69,7 @@ public class OvenScript : MonoBehaviour
                 Instantiate(newObject, ovenCenter.transform.position, Quaternion.identity);
                 anim.SetTrigger("idle");
                 GetComponent<BoxCollider2D>().enabled = true;
+                currentcooldown = 0;
                 GameStates.instance.isOvenStarting = false;
 
             }

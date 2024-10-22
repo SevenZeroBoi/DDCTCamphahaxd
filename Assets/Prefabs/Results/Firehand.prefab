@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 7021898355098188944}
   - component: {fileID: 5105392119453242379}
   - component: {fileID: 4755903975366980291}
+  - component: {fileID: 2321131998241055777}
   m_Layer: 0
   m_Name: Firehand
   m_TagString: RESULT
@@ -196,3 +197,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2321131998241055777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3533342365620612392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125aef9fcaea2c84e8e92ec2457948a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

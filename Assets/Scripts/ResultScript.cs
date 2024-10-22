@@ -9,6 +9,7 @@ public class ResultScript : MonoBehaviour
         if (collision.gameObject.tag == "BORDER")
         {
             ObjectPooling.instance.ReturnToPool(gameObject.name, gameObject);
+            GameStates.instance.currentCustomer.GetComponent<Animator>().SetTrigger("walkaway");
         }
     }
 }
