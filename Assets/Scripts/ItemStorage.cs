@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Linq;
 
 public class ItemStorage : MonoBehaviour
 {
@@ -44,17 +45,20 @@ public class ItemStorage : MonoBehaviour
         }
     }
 
-    public void CheckCombineItem()
+    public GameObject CheckCombineItem()
     {
-        foreach (var num in combindingItems)
+        foreach (var item in combindingItems)
         {
-            if (GameStates.instance.currentItemCode.ToArray() == num.Value)
+            if (item.Value.SequenceEqual(GameStates.instance.currentItemCode))
             {
-                //New item get lolx dd
-                GameStates.instance.currentItemCode = null;
-                break;
+                return item.Key;
+            }
+            else
+            {
+                return allResults[UnityEngine.Random.Range(0, allResults.Length)];
             }
         }
+        return allResults[UnityEngine.Random.Range(0, allResults.Length)];;
     }
 
     public void RandomizeJarLocation()

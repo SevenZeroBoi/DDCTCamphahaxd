@@ -18,19 +18,18 @@ public class OvenScript : MonoBehaviour
     public int currentClickTimes = 0;
     int neededClickTimes = 10;
     public bool CanAddClickCounting = false;
-    float cooldownCheck = 0;
 
     public Animator anim;
     private void Start()
     {
         anim = GetComponent<Animator>();
     }
-
+    GameObject newObject;
     private void Update()
     {
         if (GameStates.instance.isOvenStarting)
         {
-            ItemStorage.instance.CheckCombineItem();
+            newObject = ItemStorage.instance.CheckCombineItem();
             GameStates.instance.isOvenStarting = false;
         }
         else
@@ -47,16 +46,18 @@ public class OvenScript : MonoBehaviour
     {
         if (currentClickTimes >= neededClickTimes)
         {
-            currentClickTimes = 0;
             anim.SetTrigger("oven");
             //change to ovenningae;
+            currentClickTimes = 0;
+
         }
-        else if (!CanAddClickCounting)
+        else
         {
-            if (Input.GetMouseButtonDown(0) && !GameStates.instance.isMouseOnHolding)
+            if (Input.GetMouseButtonDown(0) && !GameStates.instance.isMouseOnHolding && !GameStates.instance.isOvenStarting && maxOvenitem == 2)
             {
                 currentClickTimes++;
             }
+
         }
 
         if (!CanAddClickCounting)
@@ -70,19 +71,25 @@ public class OvenScript : MonoBehaviour
             if (currentcooldown >= cooldowncheck)
             {
                 GameStates.instance.isOvenStarting = false;
+                Instantiate(newObject, ovenCenter.transform.position, Quaternion.identity);
                 anim.SetTrigger("idle");
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime == 1)
+            {
+
             }
         }
 
 
     }
 
+    int maxOvenitem;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "ITEMS" && !other.gameObject.GetComponent<ItemScript>().isStillHolding && !GameStates.instance.isOvenStarting)
+        if (other.gameObject.tag == "ITEMS" && !other.gameObject.GetComponent<ItemScript>().isStillHolding && !GameStates.instance.isOvenStarting && maxOvenitem < 2)
         {
-            
             GameStates.instance.currentItemCode.Add(other.gameObject.name);
+            maxOvenitem++;
         }
 
 
