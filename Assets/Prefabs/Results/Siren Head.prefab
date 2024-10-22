@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644012442263854786}
   - component: {fileID: 3324704965585010679}
+  - component: {fileID: -8821526071882950492}
   m_Layer: 0
   m_Name: Siren Head
   m_TagString: RESULT
@@ -68,6 +69,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.99
+--- !u!95 &-8821526071882950492
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8891268451957794115}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4456afe6cbd5f2941b8a62834871eb9a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1123549031444303512
 PrefabInstance:
   m_ObjectHideFlags: 0

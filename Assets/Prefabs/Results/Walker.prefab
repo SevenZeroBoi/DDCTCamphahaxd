@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6915785717462761309}
   - component: {fileID: 721603072184397022}
+  - component: {fileID: -4208927356310420712}
   m_Layer: 0
   m_Name: Walker
   m_TagString: RESULT
@@ -68,6 +69,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.99
+--- !u!95 &-4208927356310420712
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190891740701790596}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4456afe6cbd5f2941b8a62834871eb9a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1920657871135129970
 PrefabInstance:
   m_ObjectHideFlags: 0
